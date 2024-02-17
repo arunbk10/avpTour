@@ -1,0 +1,278 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 0.5
+    upAxis = "Y"
+)
+
+reorder rootPrims = ["Root", "GridMaterial"]
+
+def Xform "Root"
+{
+    reorder nameChildren = ["Cloud_A", "Cloud_B", "Button", "bikes_wav", "cityTraffic_mp3", "cityTraffic1", "LA_Night_City", "Location_pins", "GridMaterial"]
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    float3 xformOp:translate = (0, -0.5, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def "GridMaterial" (
+        active = true
+        references = @Materials/GridMaterial.usda@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "GridMaterial"
+        {
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "MaterialXPreviewSurface"
+            {
+                float2 ui:nodegraph:node:size = (207.5, 307)
+            }
+
+            over "Remap"
+            {
+                float2 ui:nodegraph:node:size = (94, 181)
+            }
+
+            over "Fractional"
+            {
+                float2 ui:nodegraph:node:size = (154.5, 109)
+            }
+
+            over "Multiply"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "Combine3"
+            {
+                float2 ui:nodegraph:node:size = (145, 54)
+            }
+
+            over "Subtract"
+            {
+                float2 ui:nodegraph:node:size = (61.5, 36)
+            }
+
+            over "Absval"
+            {
+                float2 ui:nodegraph:node:size = (121.5, 53)
+            }
+
+            over "BaseColor"
+            {
+                float2 ui:nodegraph:node:size = (151, 53)
+            }
+
+            over "LineColor"
+            {
+                float2 ui:nodegraph:node:size = (151, 53)
+            }
+
+            over "Texcoord"
+            {
+                float2 ui:nodegraph:node:size = (180.5, 53)
+            }
+
+            over "LineCounts"
+            {
+                float2 ui:nodegraph:node:size = (151.5, 53)
+            }
+
+            over "LineWidths"
+            {
+                float2 ui:nodegraph:node:size = (150, 53)
+            }
+
+            over "Separate2"
+            {
+                float2 ui:nodegraph:node:size = (115, 127)
+            }
+
+            over "Min"
+            {
+                float2 ui:nodegraph:node:size = (113, 40)
+            }
+
+            over "Range"
+            {
+                float2 ui:nodegraph:node:size = (98, 217)
+            }
+        }
+    }
+
+    def "LA_Night_City" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 0.4363323, 0)
+        }
+        references = @LA_Night_City.usdz@
+    )
+    {
+        reorder nameChildren = ["base", "Materials", "Meshes", "SpatialAudio", "AmbientAudio"]
+        quatf xformOp:orient = (0.976296, 0, 0.21643957, 0)
+        float3 xformOp:scale = (0.001, 0.001, 0.001)
+        float3 xformOp:translate = (0, 0.020872235, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "SpatialAudio"
+        {
+            float directivityFocus = 0.10633484
+            uniform token info:id = "RealityKit.SpatialAudio"
+        }
+
+        def Xform "AmbientAudio"
+        {
+            quatf xformOp:orient = (0.976296, 0, -0.21643959, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "AmbientAudio"
+            {
+                uniform token info:id = "RealityKit.AmbientAudio"
+            }
+        }
+
+        def "base" (
+            active = true
+            prepend references = @base.usdz@
+        )
+        {
+            quatf xformOp:orient = (0.97629607, 0, -0.21643959, 0)
+            float3 xformOp:scale = (1100, 1100.0002, 1100)
+            float3 xformOp:translate = (-10.5673895, -762.8873, 177.84)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "Location_pins" (
+        active = true
+    )
+    {
+        reorder nameChildren = ["Location_Pin_2", "Location_Pin_1"]
+        float3 xformOp:scale = (0.001, 0.001, 0.001)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def "Location_Pin_2" (
+            active = true
+            references = @Location_Pin.usdz@
+        )
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (5, 5, 5)
+            float3 xformOp:translate = (-189.2683, 859.8644, 205.26515)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Materials"
+            {
+                over "phong3"
+                {
+                    token outputs:displacement.connect = </Root/Location_pins/Location_Pin_2/Materials/phong3/phong3PreviewSurface.outputs:displacement>
+                    token outputs:surface.connect = </Root/Location_pins/Location_Pin_2/Materials/phong3/phong3PreviewSurface.outputs:surface>
+                }
+
+                over "phong2"
+                {
+                    token outputs:displacement.connect = </Root/Location_pins/Location_Pin_2/Materials/phong2/phong2PreviewSurface.outputs:displacement>
+                    token outputs:surface.connect = </Root/Location_pins/Location_Pin_2/Materials/phong2/phong2PreviewSurface.outputs:surface>
+                }
+            }
+        }
+
+        def "Location_Pin_1" (
+            active = true
+            references = @Location_Pin.usdz@
+        )
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (5, 5, 5)
+            float3 xformOp:translate = (14.634079, 574.6984, 271.88147)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Materials"
+            {
+                over "phong3"
+                {
+                    token outputs:displacement.connect = </Root/Location_pins/Location_Pin_1/Materials/phong3/phong3PreviewSurface.outputs:displacement>
+                    token outputs:surface.connect = </Root/Location_pins/Location_Pin_1/Materials/phong3/phong3PreviewSurface.outputs:surface>
+                }
+
+                over "phong2"
+                {
+                    token outputs:displacement.connect = </Root/Location_pins/Location_Pin_1/Materials/phong2/phong2PreviewSurface.outputs:displacement>
+                    token outputs:surface.connect = </Root/Location_pins/Location_Pin_1/Materials/phong2/phong2PreviewSurface.outputs:surface>
+                }
+            }
+        }
+    }
+
+    def "Cloud_A" (
+        active = true
+        references = @Cloud_A.usda@
+    )
+    {
+        float3 xformOp:scale = (0.5, 0.5, 0.5)
+        float3 xformOp:translate = (0.5721537, 0.64939153, -0.87747574)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Cloud_B" (
+        active = true
+        references = @Cloud_A.usda@
+    )
+    {
+        float3 xformOp:scale = (0.5, 0.5, 0.5)
+        float3 xformOp:translate = (0.33065897, 0.39344501, -0.13158417)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "Button" (
+        active = true
+    )
+    {
+        float3 xformOp:translate = (-0.32829928, 0.73589456, 0.972202)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitCustomComponent "RealityKitContent_POIComponent"
+        {
+            uniform token info:id = "RealityKitContent.POIComponent"
+            token location = "second"
+        }
+    }
+
+    def RealityKitAudioFile "bikes_wav"
+    {
+        uniform asset file = @bikes.wav@
+        uniform bool shouldLoop = 1
+        uniform bool shouldRandomizeStartTime = 0
+    }
+
+    def Xform "cityTraffic1" (
+        customData = {
+            float3 rotationEulerHint = (0, 0.4363323, 0)
+        }
+    )
+    {
+        quatf xformOp:orient = (0.976296, 0, 0.21643959, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.03424251, 0.10872483, 1.4144511)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "AmbientAudio"
+        {
+            uniform token info:id = "RealityKit.AmbientAudio"
+        }
+    }
+
+    def RealityKitAudioFile "cityTraffic_mp3"
+    {
+        uniform asset file = @cityTraffic.mp3@
+    }
+}
+
