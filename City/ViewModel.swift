@@ -16,14 +16,12 @@ final class ViewModel {
         
     var selectedPlaceInfo: PlaceInfo?
     var placeInfoList: [PlaceInfo] = [
-        PlaceInfo(name: "New York", locationCoordinate: CLLocationCoordinate2DMake(40.758896, -73.985130), panoId: "Xx_P23DsZzDM84ubzYq4_w"),
-        PlaceInfo(name: "Eiffel Tower", locationCoordinate: CLLocationCoordinate2DMake(48.858093, 2.294694), panoId: "tu510ie_z4ptBZYo2BGEJg"),
-        PlaceInfo(name: "Burj khalifa", locationCoordinate: CLLocationCoordinate2DMake(25.196566, 55.274462), panoId: "7k9-w26dHNwQhzvJ0JZWhw"),
+        PlaceInfo(name: "Times Square", locationCoordinate: CLLocationCoordinate2DMake(40.758896, -73.985130), panoId: "Xx_P23DsZzDM84ubzYq4_w"),
+        PlaceInfo(name: "Empire State Building", locationCoordinate: CLLocationCoordinate2DMake(40.748817, -73.985428), panoId: "V6Cn6nfTJCMZNRWF-quDRQ")
     ]
+    var rootEntity = Entity()
     private let width = 4096
     private let height = 2048
-
-    var rootEntity = Entity()
     private var contentEntity = Entity()
     private var modelEntity: ModelEntity? = nil
     private var snapshotImage: UIImage = .init()
@@ -67,13 +65,15 @@ final class ViewModel {
     
     /// Scale the model
     func updateScale() {
-        let newScale: Float = lerp(1.0, 1.0, 1.0)
+        let newScale: Float = lerp(1.5, 1.5, 1.5)
         rootEntity.setScale(SIMD3<Float>(repeating: newScale), relativeTo: nil)
+        rootEntity.isEnabled = false
     }
     
     func resetScale() {
-        let newScale: Float = lerp(0.25, 0.25, 0.25)
+        let newScale: Float = lerp(0.4, 0.4, 0.4)
         rootEntity.setScale(SIMD3<Float>(repeating: newScale), relativeTo: nil)
+        rootEntity.isEnabled = true
     }
     
     /// API.
@@ -163,4 +163,8 @@ struct PlaceInfo: Identifiable, Hashable {
     let name: String
     let locationCoordinate: CLLocationCoordinate2D
     let panoId: String
+}
+
+struct PointOfInterestRuntimeComponent: Component {
+    let attachmentTag: ObjectIdentifier
 }
