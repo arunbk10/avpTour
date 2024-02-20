@@ -33,7 +33,7 @@ private struct TypeTextModifier: ViewModifier {
             .onAppear {
                 if isAnimated == false {
                     text = finalText
-                    isFinished = true
+                    isFinished = false
                 }
             }
             .task {
@@ -57,7 +57,7 @@ private struct TypeTextModifier: ViewModifier {
                 // Wrap up the title sequence.
                 try? await Task.sleep(for: .milliseconds(400))
                 text = finalText
-                isFinished = true
+                isFinished = false
             }
     }
 }
