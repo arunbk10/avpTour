@@ -68,7 +68,7 @@ public struct LearnMoreView: View {
                     {
                         viewModel.updateScale()
                         viewModel.isChatView = true
-                        openWindow(id: "ChatView")
+                        openWindow(id: "LaunchWindow")
                         self.showImmersiveSpace  = false
                     }
                     else
@@ -92,9 +92,10 @@ public struct LearnMoreView: View {
             Task {
                 if newValue {
                     await dismissImmersiveSpace()
-                    await openImmersiveSpace(id: "ImmersiveSpace")
+                    await openImmersiveSpace(id: "StreetSpace")
                 } else {
                     await dismissImmersiveSpace()
+                    await openImmersiveSpace(id: "ImmersiveSpace")
                 }
             }
         }

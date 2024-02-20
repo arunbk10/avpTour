@@ -45,11 +45,11 @@ struct WelcomeView: View {
                 }
                 .padding()
                 
-                Button("Ask Me") {
+                Button(action: {
                     Task {
                         if isSpaceHidden {
-                            await dismissImmersiveSpace()
                             model.isChatView = true
+                            await dismissImmersiveSpace()
                             await openImmersiveSpace(id: "ImmersiveSpace")
                             isSpaceHidden = false
                             dismissWindow(id: "LaunchWindow")
@@ -59,7 +59,11 @@ struct WelcomeView: View {
                             isSpaceHidden = true
                         }
                     }
-                }.foregroundStyle(.black).glassBackgroundEffect()
+                }) {
+                    Text("Ask me").font(.system(size: 60))
+                        .frame(width: 300 , height: 80, alignment: .center)
+                }.foregroundStyle(.white).glassBackgroundEffect()
+                    .controlSize(.extraLarge)
                 Spacer()
 
             }

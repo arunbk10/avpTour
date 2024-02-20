@@ -13,17 +13,17 @@ struct DescriptionWindow: Scene
         WindowGroup(id: "DescriptionWindow") {
             ZStack {
                 ZStack {
-                    Color.gray.opacity(0.25).ignoresSafeArea()
+                    Color.gray.opacity(1.0).ignoresSafeArea()
                     
-                    Color.white.opacity(0.7).blur(radius: 200).ignoresSafeArea()
+                    Color.white.opacity(1.0).blur(radius: 200).ignoresSafeArea()
                     GeometryReader{ geometry in
                         let size = geometry.size
                         Circle().fill(.purple)
-                            .padding(50)
+                            .padding(10)
                             .blur(radius: 120)
                             .offset(x: -size.width/1.8, y: -size.height/5)
                         Circle().fill(.blue)
-                            .padding(50)
+                            .padding(10)
                             .blur(radius: 150)
                             .offset(x: -size.width/1.8, y: -size.height/2)
                     }
@@ -36,10 +36,10 @@ struct DescriptionWindow: Scene
 
                 VStack {
                     DescriptionView()
-                }.padding(100)
+                }.padding(20)
             }
             
-        }.windowStyle(.volumetric).defaultSize(width: 0.01, height: 0.01, depth: 0.0, in: .meters)
+        }.windowStyle(.plain).defaultSize(width: 0.085, height: 0.01, depth: 0.0, in: .meters)
     }
 }
 
@@ -51,22 +51,20 @@ struct DescriptionView: View {
     @Environment(\.dismissWindow) private var dismissWindow
 
     var body: some View {
-        
-        Button("Back"){
-                Task {
-                    await dismissImmersiveSpace()
-                    await openImmersiveSpace(id: "LaunchSpace")
-                    dismissWindow(id: "DescriptionWindow")
-                    openWindow(id: "ContentView")
-                }
-        }.onTapGesture {
+        Button(action: {
             Task {
+                dismissWindow(id: "DescriptionWindow")
+
                 await dismissImmersiveSpace()
                 await openImmersiveSpace(id: "LaunchSpace")
-                dismissWindow(id: "DescriptionWindow")
+                
                 openWindow(id: "ContentView")
+
             }
-        }
+        }) {
+            Text("Back").font(.system(size: 90))
+                .frame(width: 550 , height: 120, alignment: .center)
+        }.foregroundStyle(.black)
     }
 }
 

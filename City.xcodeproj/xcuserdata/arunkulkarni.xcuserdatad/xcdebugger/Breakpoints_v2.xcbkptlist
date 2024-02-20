@@ -7,64 +7,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "727E9EF2-05D1-4B04-A6D4-8A636788C9CC"
-            shouldBeEnabled = "No"
+            uuid = "80DC232E-DFBC-4105-B60D-3CB4C13E128B"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "City/DescriptionView.swift"
+            filePath = "City/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "body"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "727E9EF2-05D1-4B04-A6D4-8A636788C9CC - e70dd034ccf6b5cc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 () -&gt; () in City.DescriptionView.body.getter : some"
-                  moduleName = "City"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/arunkulkarni/avpTour/City/DescriptionView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "160">
-               </Location>
-               <Location
-                  uuid = "727E9EF2-05D1-4B04-A6D4-8A636788C9CC - d3eb5fa9bf62e86f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) await resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 () -&gt; () in City.DescriptionView.body.getter : some"
-                  moduleName = "City"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/arunkulkarni/avpTour/City/DescriptionView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  uuid = "727E9EF2-05D1-4B04-A6D4-8A636788C9CC - af4248cc928fa9d2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 () -&gt; () in City.DescriptionView.body.getter : some"
-                  moduleName = "City"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/arunkulkarni/avpTour/City/DescriptionView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "256">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

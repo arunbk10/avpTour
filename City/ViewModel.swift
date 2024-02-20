@@ -10,10 +10,12 @@ import RealityKit
 import RealityKitContent
 import Observation
 import MapKit
+import Combine
 
 @Observable
 final class ViewModel {
-        
+    var textureRequest: AnyCancellable?
+
     var selectedPlaceInfo: PlaceInfo?
     var placeInfoList: [PlaceInfo] = [
         PlaceInfo(name: "Times Square", locationCoordinate: CLLocationCoordinate2DMake(40.758896, -73.985130), panoId: "Xx_P23DsZzDM84ubzYq4_w"),
@@ -31,6 +33,7 @@ final class ViewModel {
     var titleText: String = ""
     var isTitleFinished: Bool = false
     var finalTitle: String = "Wanderlust GENIE: Your Itinerary Teaser"
+    
 
     /// Fetches image and adds to the contentEntity for street view
     func setSnapshot() async throws {
@@ -69,17 +72,20 @@ final class ViewModel {
         if let modelEntity = self.modelEntity {
             modelEntity.removeFromParent()
         }
-
+        
         let modelEntity = ModelEntity()
-
-        let material = UnlitMaterial(color: .gray)
-        modelEntity.components.set(ModelComponent(
-            mesh: .generateSphere(radius: 1E3),
-            materials: [material]
-        ))
-        modelEntity.scale *= .init(x: -1, y: 1, z: 1)
-        modelEntity.transform.translation += SIMD3<Float>(0.0, 1.0, 0.0)
-
+        textureRequest = TextureResource.loadAsync(named: "park_scene").sink { (error) in
+            print(error)
+        } receiveValue: { (texture) in
+            var material = UnlitMaterial()
+            material.color = .init(texture: .init(texture))
+            modelEntity.components.set(ModelComponent(
+                mesh: .generateSphere(radius: 1E3),
+                materials: [material]
+            ))
+            modelEntity.scale *= .init(x: -1, y: 1, z: 1)
+            modelEntity.transform.translation += SIMD3<Float>(0.0, 1.0, 0.0)
+        }
         contentEntity.addChild(modelEntity)
         self.modelEntity = modelEntity
 

@@ -19,7 +19,6 @@ struct ChatView: View {
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
-    @State var isModelShown = false
 
     /// Chat bot content
     var response: [ChatMessage] = [.init(id: UUID(),text: "Hello! How can I assist you today?", isUser: false),.init(id: UUID(),text: "Please provide me with an itinerary for New York City for a day", isUser: true),.init(id: UUID(), text: "Here's a concise one-day itinerary for New York City:\n1. Morning: Explore Empire state building.\n2.Late Afternoon: Experience Times Square's vibrant energy", isUser: false)
@@ -34,7 +33,7 @@ struct ChatView: View {
             
             VStack{
                 
-            } .navigationTitle("Wanderlust Pro")
+            } .navigationTitle("Wanderlust GENIE")
                 .clipShape(.rect)
                 .font(.extraLargeTitle2)
         }.frame(height:100)
@@ -73,27 +72,12 @@ struct ChatView: View {
         if showYesNoButtons {
             HStack {
                 Button("Yes") {
-                    if !isModelShown
-                    {
-                        dismissWindow(id: "ChatView")
-                        openWindow(id: "ContentView")
-                        Task {
-//                            await dismissImmersiveSpace()
-//                            await openImmersiveSpace(id: "LaunchSpace")
-                        }
-                        isModelShown = false
+                    dismissWindow(id: "ChatView")
+                    Task {
+                        await dismissImmersiveSpace()
+                        await openImmersiveSpace(id: "LaunchSpace")
                     }
-                    else
-                    {
-                        Task {
-//                            await dismissImmersiveSpace()
-//
-//                            await openImmersiveSpace(id: "ImmersiveSpace")
-                        }
-                        dismissWindow(id: "ContentView")
-                        openWindow(id: "ChatView")
-                        isModelShown = true
-                    }
+                    openWindow(id: "ContentView")
                 }
                 .padding()
                 .background(Color.gray)
@@ -102,7 +86,8 @@ struct ChatView: View {
                 .font(.extraLargeTitle2)
                 
                 Button("No") {
-                    // Handle No action
+                    openWindow(id: "LaunchWindow")
+                    dismissWindow(id: "ChatView")
                 }
                 .padding()
                 .background(Color(UIColor.lightGray))

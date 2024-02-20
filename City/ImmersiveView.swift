@@ -8,6 +8,7 @@
 import SwiftUI
 import RealityKit
 import RealityKitContent
+import Combine
 
 struct ImmersiveView: View {
     
@@ -18,13 +19,12 @@ struct ImmersiveView: View {
         if viewModel.isChatView
         {
             RealityView { content in
-                if let scene = try? await Entity(named: "Launch", in: realityKitContentBundle) {
-                    content.add(scene)
-                }
+                content.add(viewModel.setupContentEntity())
             }
         }
         else
         {
+            DescriptionView()
             RealityView { content in
                 content.add(viewModel.setupContentEntity())
             }
@@ -41,10 +41,21 @@ struct LaunchImmersiveView: View {
 
     var body: some View {
         RealityView { content in
-            // Add the initial RealityKit content
-            if let scene = try? await Entity(named: "Launch", in: realityKitContentBundle) {
-                content.add(scene)
-            }
+            content.add(viewModel.setupContentEntity())
+        }
+    }
+}
+
+struct StreetImmersiveView: View {
+    
+    var viewModel: ViewModel
+
+    var body: some View {
+        RealityView { content in
+            content.add(viewModel.setupContentEntity())
+        }
+        .task {
+            try? await viewModel.setSnapshot()
         }
     }
 }

@@ -39,5 +39,9 @@ struct CityApp: App {
         ImmersiveSpace(id: "LaunchSpace"){
             LaunchImmersiveView(viewModel: viewModel)
         }.immersionStyle(selection: .constant(.full), in: .full)
+        
+        ImmersiveSpace(id: "StreetSpace"){
+            StreetImmersiveView(viewModel: viewModel)
+        }.immersionStyle(selection: .constant(.full), in: .full)
     }
 }

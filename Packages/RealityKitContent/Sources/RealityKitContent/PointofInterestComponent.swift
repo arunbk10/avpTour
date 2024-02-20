@@ -10,7 +10,7 @@ public enum Location: String, Codable
 // PointofInterestComponent.registerComponent()
 public struct PointofInterestComponent: Component, Codable {
     // This is an example of adding a variable to the component.
-    var location: Location = .esb
+    public var location: Location = .esb
     public var name: String = "Learn More"
     
     public var description: String? = nil

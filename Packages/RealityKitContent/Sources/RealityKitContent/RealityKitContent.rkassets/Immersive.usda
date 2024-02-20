@@ -304,7 +304,7 @@ def Xform "Root" (
             string description = "Morning itenary, A Tower in NYC, "
             uniform token info:id = "RealityKitContent.PointofInterestComponent"
             token location = "esb"
-            string name = "1) Empire State Building"
+            string name = "1 - Empire State Building"
         }
     }
 
@@ -324,7 +324,7 @@ def Xform "Root" (
             string description = "Late noon, A Street in NYC"
             uniform token info:id = "RealityKitContent.PointofInterestComponent"
             token location = "timesSquare"
-            string name = "2) Times Square"
+            string name = "2. Times Square"
         }
     }
 
@@ -337,7 +337,7 @@ def Xform "Root" (
     {
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-0.024857163, -0.12839627, 1.4879327)
+        float3 xformOp:translate = (-0.024857163, 0.012767911, 1.4879327)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitCustomComponent "RealityKitContent_PointofInterestComponent"

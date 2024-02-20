@@ -13,6 +13,6 @@ struct LaunchWindow: Scene {
     var body: some Scene {
         WindowGroup(id: "LaunchWindow") {
             WelcomeView().environment(viewModel)
-        }.windowStyle(.volumetric).defaultSize(width: 0.7, height: 0.7, depth: 0.0, in: .meters)
+        }.windowStyle(.volumetric).defaultSize(width: 0.7, height: 0.7, depth: -0.15, in: .meters)
     }
 }

@@ -27,31 +27,6 @@ struct ContentView: View {
 
     var body: some View {
         @Bindable var viewModel = viewModel
-//        VStack {
-//            Button("Times Square") {
-//                viewModel.updateScale()
-//                viewModel.selectedPlaceInfo = viewModel.placeInfoList.first
-//                Task {
-//                    try? await viewModel.setSnapshot()
-//                }
-//
-//                self.showImmersiveSpace = true
-//            }
-//            Button("Empire State building") {
-//                viewModel.updateScale()
-//                viewModel.selectedPlaceInfo = viewModel.placeInfoList.last
-//                Task {
-//                    try? await viewModel.setSnapshot()
-//                }
-//
-//                self.showImmersiveSpace = true
-//            }
-//            Button("Map View") {
-//                viewModel.resetScale()
-//                self.showImmersiveSpace = false
-//            }
-//        }.padding(20).glassBackgroundEffect()
-        
         RealityView { content, _ in
             do {
                 let entity = try await Entity(named: "Immersive", in: realityKitContentBundle)
@@ -89,9 +64,6 @@ struct ContentView: View {
 
             guard attachmentEntity.parent == nil else { return }
 
-            // Have all the Point Of Interest attachments always face the camera by giving them a BillboardComponent.
-//            attachmentEntity.components.set(BillboardComponent())
-
             // SwiftUI calculates an attachment view's expanded size using the top center as the pivot point. This
             // raises the views so they aren't sunk into the terrain in their initial collapsed state.
             entity.addChild(attachmentEntity)
@@ -109,16 +81,6 @@ struct ContentView: View {
                 viewModel.selectedPlaceInfo = viewModel.placeInfoList.first
             }
         }
-        .onChange(of: showImmersiveSpace) { _, newValue in
-            Task {
-                if newValue {
-//                    await dismissImmersiveSpace()
-//                    await openImmersiveSpace(id: "ImmersiveSpace")
-                } else {
-//                    await dismissImmersiveSpace()
-                }
-            }
-        }
     }
     
     private func createLearnMoreView(for entity: Entity) {
@@ -130,10 +92,10 @@ struct ContentView: View {
         guard let pointOfInterest = entity.components[PointofInterestComponent.self] else { return }
             
         let tag: ObjectIdentifier = entity.id
-        
+        let place = pointOfInterest.location == .esb ? viewModel.placeInfoList.last : viewModel.placeInfoList.first
         let view = LearnMoreView(name: pointOfInterest.name,
                                  description:  pointOfInterest.description ?? "",
-                                 id: viewModel.selectedPlaceInfo,
+                                 id: place,
                                  viewModel: viewModel)
             .tag(tag)
         
