@@ -37,7 +37,7 @@ struct DescriptionWindow: Scene
                 VStack {
                     DescriptionView()
                 }.padding(20)
-            }
+            }.cornerRadius(15)
             
         }.windowStyle(.plain).defaultSize(width: 0.085, height: 0.01, depth: 0.0, in: .meters)
     }

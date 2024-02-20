@@ -9,12 +9,12 @@ reorder rootPrims = ["Root", "GridMaterial"]
 
 def Xform "Root" (
     customData = {
-        float3 rotationEulerHint = (0, 0, 0)
+        float3 rotationEulerHint = (0.17453292, 0, 0)
     }
 )
 {
     reorder nameChildren = ["Cloud_A", "Cloud_B", "bikes_wav", "cityTraffic_mp3", "timesSquare", "back", "esb", "cityTraffic1", "LA_Night_City", "Location_pins", "GridMaterial"]
-    quatf xformOp:orient = (1, 0, 0, 0)
+    quatf xformOp:orient = (0.9961947, 0.087155744, 0, 0)
     float3 xformOp:scale = (1, 1, 1)
     float3 xformOp:translate = (0, 0, 0)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]

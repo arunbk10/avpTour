@@ -39,7 +39,7 @@ struct ContentView: View {
                 viewModel.rootEntity = entity
                 viewModel.resetScale()
                 entity.position.y = -0.4
-                entity.position.z = -0.6
+                entity.position.z = -0.2
                 content.add(entity)
                 
                 subscriptions.append(content.subscribe(to: ComponentEvents.DidAdd.self, componentType: PointofInterestComponent.self, { event in

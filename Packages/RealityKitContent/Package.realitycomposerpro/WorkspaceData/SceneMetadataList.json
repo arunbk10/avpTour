@@ -36,15 +36,6 @@
       [
         "1D572CEB-057A-41C3-B575-04C37501A3C0",
         "Root",
-        "Location_pins"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "1D572CEB-057A-41C3-B575-04C37501A3C0",
-        "Root",
         "LA_Night_City"
       ],
       {
@@ -52,6 +43,19 @@
         "isLocked" : false,
         "selectedAudioFilePrim" : {
           "string" : "\/Root\/cityTraffic_mp3"
+        }
+      },
+      [
+        "1D572CEB-057A-41C3-B575-04C37501A3C0",
+        "Root",
+        "LA_Night_City",
+        "SpatialAudio_1"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : false,
+        "selectedAudioFilePrim" : {
+          "string" : "\/Root\/LA_Night_City\/vehicles"
         }
       },
       [
@@ -70,15 +74,11 @@
       [
         "1D572CEB-057A-41C3-B575-04C37501A3C0",
         "Root",
-        "LA_Night_City",
-        "SpatialAudio_1"
+        "Location_pins"
       ],
       {
-        "isExpanded" : false,
-        "isLocked" : false,
-        "selectedAudioFilePrim" : {
-          "string" : "\/Root\/LA_Night_City\/vehicles"
-        }
+        "isExpanded" : true,
+        "isLocked" : false
       }
     ]
   },
