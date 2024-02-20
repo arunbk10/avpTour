@@ -19,12 +19,18 @@ final class ViewModel {
         PlaceInfo(name: "Times Square", locationCoordinate: CLLocationCoordinate2DMake(40.758896, -73.985130), panoId: "Xx_P23DsZzDM84ubzYq4_w"),
         PlaceInfo(name: "Empire State Building", locationCoordinate: CLLocationCoordinate2DMake(40.748817, -73.985428), panoId: "V6Cn6nfTJCMZNRWF-quDRQ")
     ]
+    
     var rootEntity = Entity()
+    var isChatView = true
     private let width = 4096
     private let height = 2048
     private var contentEntity = Entity()
     private var modelEntity: ModelEntity? = nil
     private var snapshotImage: UIImage = .init()
+    
+    var titleText: String = ""
+    var isTitleFinished: Bool = false
+    var finalTitle: String = "Wanderlust GENIE: Your Itinerary Teaser"
 
     /// Fetches image and adds to the contentEntity for street view
     func setSnapshot() async throws {
@@ -41,6 +47,23 @@ final class ViewModel {
             modelEntity?.model?.materials[0] = material
         }
     }
+    
+    func setupBackgroundEntityOnLaunch() -> Entity {
+        let modelEntity = ModelEntity()
+
+        let material = UnlitMaterial(color: .blue)
+        modelEntity.components.set(ModelComponent(
+            mesh: .generateSphere(radius: 1E3),
+            materials: [material]
+        ))
+        modelEntity.scale *= .init(x: -1, y: 1, z: 1)
+        modelEntity.transform.translation += SIMD3<Float>(0.0, 1.0, 0.0)
+
+        contentEntity.addChild(modelEntity)
+        self.modelEntity = modelEntity
+
+        return contentEntity
+    }
     /// Adds the immersive view of street view to current volume
     func setupContentEntity() -> Entity {
         if let modelEntity = self.modelEntity {
@@ -49,7 +72,7 @@ final class ViewModel {
 
         let modelEntity = ModelEntity()
 
-        let material = UnlitMaterial(color: .black)
+        let material = UnlitMaterial(color: .gray)
         modelEntity.components.set(ModelComponent(
             mesh: .generateSphere(radius: 1E3),
             materials: [material]

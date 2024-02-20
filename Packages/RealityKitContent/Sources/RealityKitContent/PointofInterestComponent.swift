@@ -4,6 +4,7 @@ public enum Location: String, Codable
 {
     case timesSquare
     case esb
+    case back
 }
 // Ensure you register this component in your app’s delegate using:
 // PointofInterestComponent.registerComponent()

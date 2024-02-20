@@ -27,30 +27,30 @@ struct ContentView: View {
 
     var body: some View {
         @Bindable var viewModel = viewModel
-        VStack {
-            Button("Times Square") {
-                viewModel.updateScale()
-                viewModel.selectedPlaceInfo = viewModel.placeInfoList.first
-                Task {
-                    try? await viewModel.setSnapshot()
-                }
-
-                self.showImmersiveSpace = true
-            }
-            Button("Empire State building") {
-                viewModel.updateScale()
-                viewModel.selectedPlaceInfo = viewModel.placeInfoList.last
-                Task {
-                    try? await viewModel.setSnapshot()
-                }
-
-                self.showImmersiveSpace = true
-            }
-            Button("Map View") {
-                viewModel.resetScale()
-                self.showImmersiveSpace = false
-            }
-        }.padding(20).glassBackgroundEffect()
+//        VStack {
+//            Button("Times Square") {
+//                viewModel.updateScale()
+//                viewModel.selectedPlaceInfo = viewModel.placeInfoList.first
+//                Task {
+//                    try? await viewModel.setSnapshot()
+//                }
+//
+//                self.showImmersiveSpace = true
+//            }
+//            Button("Empire State building") {
+//                viewModel.updateScale()
+//                viewModel.selectedPlaceInfo = viewModel.placeInfoList.last
+//                Task {
+//                    try? await viewModel.setSnapshot()
+//                }
+//
+//                self.showImmersiveSpace = true
+//            }
+//            Button("Map View") {
+//                viewModel.resetScale()
+//                self.showImmersiveSpace = false
+//            }
+//        }.padding(20).glassBackgroundEffect()
         
         RealityView { content, _ in
             do {
@@ -64,6 +64,7 @@ struct ContentView: View {
                 viewModel.rootEntity = entity
                 viewModel.resetScale()
                 entity.position.y = -0.4
+                entity.position.z = -0.6
                 content.add(entity)
                 
                 subscriptions.append(content.subscribe(to: ComponentEvents.DidAdd.self, componentType: PointofInterestComponent.self, { event in
@@ -111,9 +112,10 @@ struct ContentView: View {
         .onChange(of: showImmersiveSpace) { _, newValue in
             Task {
                 if newValue {
-                    await openImmersiveSpace(id: "ImmersiveSpace")
+//                    await dismissImmersiveSpace()
+//                    await openImmersiveSpace(id: "ImmersiveSpace")
                 } else {
-                    await dismissImmersiveSpace()
+//                    await dismissImmersiveSpace()
                 }
             }
         }

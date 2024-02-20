@@ -14,16 +14,37 @@ struct ImmersiveView: View {
     var viewModel: ViewModel
 
     var body: some View {
-        RealityView { content in
-            content.add(viewModel.setupContentEntity())
+        
+        if viewModel.isChatView
+        {
+            RealityView { content in
+                if let scene = try? await Entity(named: "Launch", in: realityKitContentBundle) {
+                    content.add(scene)
+                }
+            }
         }
-        .task {
-            try? await viewModel.setSnapshot()
+        else
+        {
+            RealityView { content in
+                content.add(viewModel.setupContentEntity())
+            }
+            .task {
+                try? await viewModel.setSnapshot()
+            }
         }
     }
 }
 
-#Preview {
-    ImmersiveView(viewModel: ViewModel())
-        .previewLayout(.sizeThatFits)
+struct LaunchImmersiveView: View {
+    
+    var viewModel: ViewModel
+
+    var body: some View {
+        RealityView { content in
+            // Add the initial RealityKit content
+            if let scene = try? await Entity(named: "Launch", in: realityKitContentBundle) {
+                content.add(scene)
+            }
+        }
+    }
 }

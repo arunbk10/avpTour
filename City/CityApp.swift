@@ -24,14 +24,20 @@ struct CityApp: App {
     }
     
     var body: some SwiftUI.Scene {
-        WindowGroup {
+        LaunchWindow(viewModel: viewModel)
+        DescriptionWindow()
+        WindowGroup(id: "ChatView"){
+            ChatView(viewModel: viewModel)
+        }.windowStyle(.volumetric).defaultSize(width: 1, height: 0.8, depth: 0.0, in: .meters)
+        WindowGroup (id: "ContentView"){
             ContentView(viewModel: viewModel)
         }.windowStyle(.volumetric).defaultSize(width: someWindowSize, height: someWindowSize, depth: someWindowSize)
-            
-        
-        ImmersiveSpace(id: "ImmersiveSpace") {
+        ImmersiveSpace(id: "ImmersiveSpace"){
             ImmersiveView(viewModel: viewModel)
+        }.immersionStyle(selection: .constant(.full), in: .full)
+        
+        ImmersiveSpace(id: "LaunchSpace"){
+            LaunchImmersiveView(viewModel: viewModel)
         }.immersionStyle(selection: .constant(.full), in: .full)
     }
 }
-

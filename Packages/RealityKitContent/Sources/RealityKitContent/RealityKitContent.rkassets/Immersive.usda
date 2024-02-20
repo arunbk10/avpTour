@@ -13,7 +13,7 @@ def Xform "Root" (
     }
 )
 {
-    reorder nameChildren = ["Cloud_A", "Cloud_B", "bikes_wav", "cityTraffic_mp3", "timesSquare", "Back", "esb", "cityTraffic1", "LA_Night_City", "Location_pins", "GridMaterial"]
+    reorder nameChildren = ["Cloud_A", "Cloud_B", "bikes_wav", "cityTraffic_mp3", "timesSquare", "back", "esb", "cityTraffic1", "LA_Night_City", "Location_pins", "GridMaterial"]
     quatf xformOp:orient = (1, 0, 0, 0)
     float3 xformOp:scale = (1, 1, 1)
     float3 xformOp:translate = (0, 0, 0)
@@ -301,10 +301,10 @@ def Xform "Root" (
 
         def RealityKitCustomComponent "RealityKitContent_PointofInterestComponent"
         {
-            string description = "A Tower in NYC"
+            string description = "Morning itenary, A Tower in NYC, "
             uniform token info:id = "RealityKitContent.PointofInterestComponent"
             token location = "esb"
-            string name = "Empire State Building"
+            string name = "1) Empire State Building"
         }
     }
 
@@ -321,14 +321,14 @@ def Xform "Root" (
 
         def RealityKitCustomComponent "RealityKitContent_PointofInterestComponent"
         {
-            string description = "A Street in NYC"
+            string description = "Late noon, A Street in NYC"
             uniform token info:id = "RealityKitContent.PointofInterestComponent"
             token location = "timesSquare"
-            string name = "Times Square"
+            string name = "2) Times Square"
         }
     }
 
-    def Xform "Back" (
+    def Xform "back" (
         active = true
         customData = {
             float3 rotationEulerHint = (0, 0, 0)
@@ -336,12 +336,16 @@ def Xform "Root" (
     )
     {
         quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:translate = (0, 2.119437, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-0.024857163, -0.12839627, 1.4879327)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
-        def RealityKitCustomComponent "RealityKitContent_POIComponent"
+        def RealityKitCustomComponent "RealityKitContent_PointofInterestComponent"
         {
-            uniform token info:id = "RealityKitContent.POIComponent"
+            string description = "to chat box"
+            uniform token info:id = "RealityKitContent.PointofInterestComponent"
+            token location = "back"
+            string name = "Back"
         }
     }
 }

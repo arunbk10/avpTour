@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		FC0592992B835DF200D13706 /* LearnMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0592982B835DF200D13706 /* LearnMoreView.swift */; };
+		FC05929B2B839FF900D13706 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05929A2B839FF900D13706 /* ChatView.swift */; };
+		FC05929D2B83BE4400D13706 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05929C2B83BE4400D13706 /* WelcomeView.swift */; };
+		FC05929F2B83BFF500D13706 /* LaunchWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05929E2B83BFF500D13706 /* LaunchWindow.swift */; };
+		FC0592A12B83D8B300D13706 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0592A02B83D8B300D13706 /* DescriptionView.swift */; };
+		FC0592A32B84659700D13706 /* TypeTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0592A22B84659700D13706 /* TypeTextModifier.swift */; };
 		FCC6757E2B7F5BD9006EE9BD /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = FCC6757D2B7F5BD9006EE9BD /* RealityKitContent */; };
 		FCC675802B7F5BD9006EE9BD /* CityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC6757F2B7F5BD9006EE9BD /* CityApp.swift */; };
 		FCC675822B7F5BD9006EE9BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC675812B7F5BD9006EE9BD /* ContentView.swift */; };
@@ -22,6 +27,11 @@
 
 /* Begin PBXFileReference section */
 		FC0592982B835DF200D13706 /* LearnMoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnMoreView.swift; sourceTree = "<group>"; };
+		FC05929A2B839FF900D13706 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		FC05929C2B83BE4400D13706 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		FC05929E2B83BFF500D13706 /* LaunchWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchWindow.swift; sourceTree = "<group>"; };
+		FC0592A02B83D8B300D13706 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		FC0592A22B84659700D13706 /* TypeTextModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeTextModifier.swift; sourceTree = "<group>"; };
 		FCC675782B7F5BD9006EE9BD /* City.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = City.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCC6757C2B7F5BD9006EE9BD /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		FCC6757F2B7F5BD9006EE9BD /* CityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityApp.swift; sourceTree = "<group>"; };
@@ -68,12 +78,17 @@
 		FCC6757A2B7F5BD9006EE9BD /* City */ = {
 			isa = PBXGroup;
 			children = (
-				FC0592982B835DF200D13706 /* LearnMoreView.swift */,
-				FCC675922B7F7C35006EE9BD /* AttachmentsProvider.swift */,
 				FCC6757F2B7F5BD9006EE9BD /* CityApp.swift */,
+				FC05929E2B83BFF500D13706 /* LaunchWindow.swift */,
+				FC05929C2B83BE4400D13706 /* WelcomeView.swift */,
+				FC05929A2B839FF900D13706 /* ChatView.swift */,
 				FCC675812B7F5BD9006EE9BD /* ContentView.swift */,
+				FC0592982B835DF200D13706 /* LearnMoreView.swift */,
+				FC0592A02B83D8B300D13706 /* DescriptionView.swift */,
 				FCC675942B7F8D81006EE9BD /* ViewModel.swift */,
+				FCC675922B7F7C35006EE9BD /* AttachmentsProvider.swift */,
 				FCDB36592B809659005E8E5F /* Lerp.swift */,
+				FC0592A22B84659700D13706 /* TypeTextModifier.swift */,
 				FCC675832B7F5BD9006EE9BD /* ImmersiveView.swift */,
 				FCC675852B7F5BD9006EE9BD /* ImageBasedLighting.skybox */,
 				FCC675872B7F5BDB006EE9BD /* Assets.xcassets */,
@@ -176,7 +191,12 @@
 				FCC675952B7F8D81006EE9BD /* ViewModel.swift in Sources */,
 				FCC675822B7F5BD9006EE9BD /* ContentView.swift in Sources */,
 				FC0592992B835DF200D13706 /* LearnMoreView.swift in Sources */,
+				FC0592A32B84659700D13706 /* TypeTextModifier.swift in Sources */,
 				FCDB365A2B809659005E8E5F /* Lerp.swift in Sources */,
+				FC05929F2B83BFF500D13706 /* LaunchWindow.swift in Sources */,
+				FC05929D2B83BE4400D13706 /* WelcomeView.swift in Sources */,
+				FC05929B2B839FF900D13706 /* ChatView.swift in Sources */,
+				FC0592A12B83D8B300D13706 /* DescriptionView.swift in Sources */,
 				FCC675802B7F5BD9006EE9BD /* CityApp.swift in Sources */,
 				FCC675842B7F5BD9006EE9BD /* ImmersiveView.swift in Sources */,
 				FCC675932B7F7C35006EE9BD /* AttachmentsProvider.swift in Sources */,

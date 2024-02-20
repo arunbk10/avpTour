@@ -15,6 +15,8 @@ public struct LearnMoreView: View {
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
     @State private var showImmersiveSpace = false
+    @Environment(\.openWindow) private var openWindow
+    @Environment(\.dismissWindow) private var dismissWindow
 
     let name: String
     let description: String
@@ -60,15 +62,28 @@ public struct LearnMoreView: View {
             .redBackground()
             .onTapGesture {
                 withAnimation(.spring) {
-                    showingMoreInfo.toggle()
-                    if let place = id
+//                    showingMoreInfo.toggle()
+                    dismissWindow(id: "ContentView")
+                    if name == "Back"
                     {
                         viewModel.updateScale()
-                        viewModel.selectedPlaceInfo = place
-                        Task {
-                            try? await viewModel.setSnapshot()
+                        viewModel.isChatView = true
+                        openWindow(id: "ChatView")
+                        self.showImmersiveSpace  = false
+                    }
+                    else
+                    {
+                        if let place = id
+                        {
+                            viewModel.updateScale()
+                            viewModel.selectedPlaceInfo = place
+                            Task {
+                                try? await viewModel.setSnapshot()
+                            }
+                            viewModel.isChatView = false
+                            openWindow(id: "DescriptionWindow")
+                            self.showImmersiveSpace  = true
                         }
-                        self.showImmersiveSpace  = true
                     }
                 }
             }
@@ -76,6 +91,7 @@ public struct LearnMoreView: View {
         .onChange(of: showImmersiveSpace) { _, newValue in
             Task {
                 if newValue {
+                    await dismissImmersiveSpace()
                     await openImmersiveSpace(id: "ImmersiveSpace")
                 } else {
                     await dismissImmersiveSpace()
@@ -89,12 +105,24 @@ public extension View {
     func redBackground() -> some View {
         modifier(RedBackground())
     }
+    
+    func greenBackground() -> some View {
+        modifier(RedBackground())
+    }
 }
 
 public struct RedBackground: ViewModifier {
     public func body(content: Content) -> some View {
         content
             .background(.red.opacity(0.2))
+            .glassBackgroundEffect(in: .rect(cornerRadius: 10))
+    }
+}
+
+public struct GreenBackground: ViewModifier {
+    public func body(content: Content) -> some View {
+        content
+            .background(.green.opacity(0.2))
             .glassBackgroundEffect(in: .rect(cornerRadius: 10))
     }
 }
